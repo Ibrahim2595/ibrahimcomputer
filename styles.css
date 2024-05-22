@@ -1,7 +1,7 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items at the top */
     height: 100vh;
     margin: 0;
     padding: 10px; /* Adjust this padding for phone screen padding */
@@ -11,30 +11,30 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Ensure containers are aligned at the top */
     align-items: center;
     width: 100%;
     max-width: 800px; /* Max width for wide screens */
-    padding-top: 550px; /* Padding around the content */
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 20px; /* Padding around the content */
     box-sizing: border-box;
+    padding-top: 200px;
+
+}
+
+#tree-container {
+    width: 100%;
+    max-height: 300px; /* Max height for wide screens */
 }
 
 #text-container {
     width: 100%;
     text-align: center;
     font-family: sans-serif;
-    margin-bottom: 0px; /* Padding between the text and the tree */
+    margin-top: 30px; /* Margin between the tree and the text */
 }
 
 #intro-text {
-    font-size: 2em; /* Large font for the paragraph */
-}
-
-#tree-container {
-    width: 100%;
-    height: 80vh; /* Ensure enough height for the tree diagram */
+    font-size: 28px; /* Large font for the paragraph */
 }
 
 svg {
@@ -81,11 +81,14 @@ svg {
 /* Responsive styles for phone screens */
 @media only screen and (max-width: 600px) {
     .container {
-        padding-top: 300px; /* Adjust this padding for phone screen padding */
+        padding: 10px; /* Adjust this padding for phone screen padding */
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 120px;
     }
 
     #intro-text {
-        font-size: 1.5em; /* Adjust font size for phone screens */
+        font-size: 1.0em; /* Adjust font size for phone screens */
     }
 
     .node text {
@@ -93,8 +96,9 @@ svg {
     }
 
     #tree-container {
-        height: 70vh; /* Adjust height for the tree diagram on phone screens */
+        max-height: 150px; /* Ensure the tree container does not exceed 110px on small screens */
     }
+
     .link {
         stroke-width: 4px; /* Change line thickness here */
     }

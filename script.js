@@ -20,16 +20,17 @@ const data = {
 
 const default_circle_dim = 5;
 const small_screen_circle_dim = 2;
-const highlighted_var = "Interactions";
+const highlighted_var = "About";
+const expanded_node = "About";
 const default_opacity = 1.0; // Default opacity
 const highlighted_opacity = 1.0; // Highlighted opacity
 
 // Function to get margin based on screen size
 function getMargin() {
     if (isSmallScreen()) {
-        return { top: 20, right: 10, bottom: 30, left: 65 };
+        return { top: 1, right: 10, bottom: 1, left: 70 };
     } else {
-        return { top: 20, right: 10, bottom: 30, left: 100 };
+        return { top: 1, right: 10, bottom: 1, left: 100 };
     }
 }
 
@@ -37,13 +38,21 @@ function isSmallScreen() {
     return window.innerWidth <= 600;
 }
 
+// Function to get container height based on screen size
+function getContainerHeight() {
+    return isSmallScreen() ? 150 : 300;
+}
+
+// Set the initial container height
+document.querySelector('#tree-container').style.height = getContainerHeight() + 'px';
+
 let margin = getMargin();
 
 // Get the container dimensions and adjust the tree layout size dynamically
 function getDimensions() {
     const container = document.querySelector('#tree-container');
     const width = container.clientWidth - margin.left - margin.right;
-    const height = container.clientHeight - margin.top - margin.bottom;
+    const height = container.clientHeight - margin.top - margin.bottom; // Adjust height dynamically
     return { width, height };
 }
 
@@ -74,11 +83,12 @@ root.y0 = 0;
 
 // Collapse all nodes except the root and "Projects" children
 root.children.forEach(d => {
-    if (d.data.name !== "on my desk") {
+    if (d.data.name !== expanded_node) {
         collapse(d);
-    } else {
-        d.children.forEach(child => expand(child));
-    }
+    } 
+    // else {
+    //     d.children.forEach(child => expand(child));
+    // }
 });
 
 // Default highlighted node
@@ -109,11 +119,11 @@ function update(source) {
           links = treeData.descendants().slice(1);
 
     if (isSmallScreen()) {
-        nodes.forEach(function(d) { d.y = d.depth * 70 }); // Increase depth for larger spacing on small screens
-        nodes.forEach(function(d) { d.x = d.x * 0.3; }); // Increase vertical spacing on small screens
+        nodes.forEach(function(d) { d.y = d.depth * 60 }); // Increase depth for larger spacing on small screens
+        nodes.forEach(function(d) { d.x = d.x * 1.0; }); // Increase vertical spacing on small screens
     } else {
         nodes.forEach(function(d) { d.y = d.depth * 190 }); // Increase depth for larger spacing on large screens
-        nodes.forEach(function(d) { d.x = d.x * 0.5; }); // Increase vertical spacing on large screens
+        nodes.forEach(function(d) { d.x = d.x * 1.0; }); // Increase vertical spacing on large screens
     }
 
     // Update the nodes
@@ -140,7 +150,12 @@ function update(source) {
     nodeEnter.append('text')
         .attr('dy', '.35em')
         .attr('x', function(d) {
-            return d.children || d._children ? -10 : 10;
+            if (isSmallScreen()) {
+            return d.children || d._children ? -5 : 5;
+            }
+            else {
+                return d.children || d._children ? -10 : 10;  
+            }
         })
         .attr('text-anchor', function(d) {
             return d.children || d._children ? "end" : "start";
@@ -311,6 +326,7 @@ function collapse(d) {
 
 // Ensure the tree resizes correctly when the window is resized
 window.addEventListener('resize', () => {
+    document.querySelector('#tree-container').style.height = getContainerHeight() + 'px';
     margin = getMargin();
     const dimensions = getDimensions();
     width = dimensions.width;
