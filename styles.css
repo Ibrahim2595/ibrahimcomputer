@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 10px; /* Adjust this padding for phone screen padding */
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Max width for wide screens */
+    padding-top: 550px; /* Padding around the content */
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+#text-container {
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 0px; /* Padding between the text and the tree */
+}
+
+#intro-text {
+    font-size: 2em; /* Large font for the paragraph */
+}
+
+#tree-container {
+    width: 100%;
+    height: 80vh; /* Ensure enough height for the tree diagram */
+}
+
+svg {
+    width: 100%;
+    height: 100%; /* Ensure SVG takes full height */
+}
+
+/* Style for nodes */
+.node {
+    cursor: pointer;
+}
+
+/* Style for node circles */
+.node circle {
+    fill: #999;
+    stroke: none; /* Remove the outline */
+}
+
+/* Style for node text */
+.node text {
+    font: 14px sans-serif;
+    fill: gray; /* Change default text color to gray */
+}
+
+/* Style for links between nodes */
+.link {
+    fill: none;
+    stroke: #555;
+    stroke-opacity: 0.4;
+    stroke-width: 10px; /* Change line thickness here */
+}
+
+/* Highlighted link style */
+.highlighted-link {
+    stroke: red; /* Change highlighted link color here */
+    stroke-width: 3px; /* Change highlighted link thickness here */
+}
+
+/* Highlighted text style */
+.highlighted-text {
+    fill: red; /* Change highlighted text color here */
+}
+
+/* Responsive styles for phone screens */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding-top: 300px; /* Adjust this padding for phone screen padding */
+    }
+
+    #intro-text {
+        font-size: 1.5em; /* Adjust font size for phone screens */
+    }
+
+    .node text {
+        font-size: 8px; /* Adjust font size for tree nodes on phone screens */
+    }
+
+    #tree-container {
+        height: 70vh; /* Adjust height for the tree diagram on phone screens */
+    }
+    .link {
+        stroke-width: 4px; /* Change line thickness here */
+    }
+}
