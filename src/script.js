@@ -3,10 +3,7 @@ const data = {
     "name": "I'm Ibrahim",
     "children": [
         { "name": "About" },
-        { "name": "Interests", "children": [
-            { "name": "Minerals & rocks" },
-            { "name": "Bicycles" },
-        ]},
+        { "name": "Interests"},
         { "name": "on my desk", "children": [
             { "name": "Reflections" },
             { "name": "Projects", "children": [
@@ -85,10 +82,7 @@ root.y0 = 0;
 root.children.forEach(d => {
     if (d.data.name !== expanded_node) {
         collapse(d);
-    } 
-    // else {
-    //     d.children.forEach(child => expand(child));
-    // }
+    }
 });
 
 // Default highlighted node
@@ -245,10 +239,10 @@ function update(source) {
         .duration(duration)
         .attr('d', function(d) { return diagonal(d, d.parent); })
         .style('stroke', function(d) {
-            return clickedNode && clickedNode.ancestors().includes(d) ? 'red' : '#555'; // Highlight clicked path
+            return (clickedNode && clickedNode.ancestors().includes(d)) || clickedNode === d ? 'red' : '#555'; // Highlight clicked path
         })
         .style('stroke-width', function(d) {
-            return clickedNode && clickedNode.ancestors().includes(d) ? 3 : 1.5; // Highlight clicked path
+            return (clickedNode && clickedNode.ancestors().includes(d)) || clickedNode === d ? 3 : 1.5; // Highlight clicked path
         });
 
     // Remove any exiting links
@@ -279,6 +273,11 @@ function update(source) {
     function click(event, d) {
         if (!d.children && !d._children) {
             clickedNode = d; // Set the clicked node
+            // Determine content index based on clicked node name
+            const contentIndex = getContentIndexByName(d.data.name);
+            if (contentIndex !== -1) {
+                showContent(contentIndex);
+            }
         } else if (d.children) {
             d._children = d.children;
             d.children = null;
@@ -337,3 +336,18 @@ window.addEventListener('resize', () => {
         .attr("transform", `translate(${margin.left},${margin.top})`);
     update(root);
 });
+
+// Map node names to content indices
+const nodeNameToContentIndex = {
+    "About": 0,
+    "Interests": 1,
+    "Reflections": 2,
+    "Interactions": 3,
+    "AIs": 4,
+    "Drones": 5
+};
+
+// Helper function to get content index by node name
+function getContentIndexByName(name) {
+    return nodeNameToContentIndex[name] !== undefined ? nodeNameToContentIndex[name] : -1;
+}

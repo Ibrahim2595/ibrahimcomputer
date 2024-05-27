@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     display: flex;
     justify-content: center;
@@ -18,7 +19,6 @@ body {
     padding: 20px; /* Padding around the content */
     box-sizing: border-box;
     padding-top: 200px;
-
 }
 
 #tree-container {
@@ -26,17 +26,7 @@ body {
     max-height: 300px; /* Max height for wide screens */
 }
 
-#text-container {
-    width: 100%;
-    text-align: center;
-    font-family: sans-serif;
-    margin-top: 30px; /* Margin between the tree and the text */
-}
-
-#intro-text {
-    font-size: 28px; /* Large font for the paragraph */
-}
-
+/* Tree Diagram Styles */
 svg {
     width: 100%;
     height: 100%; /* Ensure SVG takes full height */
@@ -55,8 +45,14 @@ svg {
 
 /* Style for node text */
 .node text {
-    font: 14px sans-serif;
-    fill: gray; /* Change default text color to gray */
+    /* font-family: "Times New Roman", Times, serif;
+    font-size: 14px; */
+    font: 14px;
+    /* fill: gray;  */
+    fill: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* Style for links between nodes */
@@ -76,6 +72,84 @@ svg {
 /* Highlighted text style */
 .highlighted-text {
     fill: red; /* Change highlighted text color here */
+}
+
+/* Form Styles */
+body {
+    /* font-family: "Times New Roman", Times, serif; */
+    font: 14px sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.outer-border {
+    border: 1px solid #000;
+    margin: 20px auto;
+    padding: 2.5px;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.inner-border {
+    border: 1px solid #000;
+    padding: 2.5px;
+}
+
+.container-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px; /* Consistent gap between all rows */
+}
+
+.row {
+    display: flex;
+    gap: 2.5px; /* gap between columns */
+}
+
+.section {
+    border: .75px solid #000;
+    padding: 5px;
+    flex: 1;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.title {
+    /* font-family: "Times New Roman", serif; */
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /* font: sans-serif; */
+    font-size: 24px;
+}
+
+.date {
+    /* font-family: "Times New Roman", serif; */
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+
+}
+
+.collab {
+    /* font-family: "Times New Roman", serif; */
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+#images img {
+    width: 100%;
+    display: block;
 }
 
 /* Responsive styles for phone screens */
@@ -101,5 +175,12 @@ svg {
 
     .link {
         stroke-width: 4px; /* Change line thickness here */
+    }
+
+    .section {
+        font-size: 8px;
+    }
+    .title {
+        font-size: 14px;
     }
 }
