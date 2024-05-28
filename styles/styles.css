@@ -86,7 +86,7 @@ body {
 .outer-border {
     border: 1px solid #000;
     margin: 20px auto;
-    padding: 2.5px;
+    padding: 2.0px;
     max-width: 800px;
     width: 100%;
     margin-top: 50px;
@@ -94,7 +94,7 @@ body {
 
 .inner-border {
     border: 1px solid #000;
-    padding: 2.5px;
+    padding: 2.0px;
 }
 
 .container-form {
@@ -105,12 +105,12 @@ body {
 #content {
     display: flex;
     flex-direction: column;
-    gap: 2.5px; /* Consistent gap between all rows */
+    gap: 2.0px; /* Consistent gap between all rows */
 }
 
 .row {
     display: flex;
-    gap: 2.5px; /* gap between columns */
+    gap: 2.0px; /* gap between columns */
 }
 
 .section {
@@ -159,10 +159,6 @@ body {
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 120px;
-    }
-
-    #intro-text {
-        font-size: 1.0em; /* Adjust font size for phone screens */
     }
 
     .node text {

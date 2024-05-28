@@ -32,7 +32,7 @@ const contentData = [
         date: "date",
         collab: "",
         text: "human-[ai, computer, machine, environment] interaction",
-        images: ["placeholder.png", "placeholder.png"],
+        images: ["placeholder.png", "placeholder.png", "placeholder.png"],
         captions: "captions",
         references: "references"
     },
