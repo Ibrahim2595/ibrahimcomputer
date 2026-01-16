@@ -1,0 +1,226 @@
+/* ==========================================================================
+   D3 Tree Visualization Styles
+   ==========================================================================
+   
+   BREAKPOINTS (3 fixed sizes):
+   - Desktop: > 1024px
+   - Tablet: 481px - 1024px
+   - Mobile: <= 480px
+   
+   ========================================================================== */
+
+:root {
+  /* ======================
+     CIRCLE (NODE) - DESKTOP
+     ====================== */
+  --node-radius: 5px;                     /* Circle radius - normal state */
+  --node-radius-collapsed: 8px;           /* Circle radius - when tree is collapsed (root only) */
+  
+  /* Circle Fill - INACTIVE */
+  --node-fill: #ffffff;                   /* Fill color */
+  --node-fill-opacity: 1;                 /* Fill opacity */
+  
+  /* Circle Outline - INACTIVE */
+  --node-outline-color: #000000;          /* Outline color */
+  --node-outline-weight: 1px;             /* Outline thickness */
+  --node-outline-opacity: 1;              /* Outline opacity */
+  
+  /* Circle Fill - ACTIVE */
+  --node-fill-active: #000000;            /* Fill color when active */
+  --node-fill-opacity-active: 1;          /* Fill opacity when active */
+  
+  /* Circle Outline - ACTIVE */
+  --node-outline-color-active: #000000;   /* Outline color when active */
+  --node-outline-weight-active: 1px;      /* Outline thickness when active */
+  --node-outline-opacity-active: 1;       /* Outline opacity when active */
+  
+  /* Circle HOVER State */
+  --node-fill-hover: #000000;             /* Fill color on hover */
+  --node-fill-opacity-hover: 0.5;         /* Fill opacity on hover */
+  --node-outline-color-hover: #000000;    /* Outline color on hover */
+  --node-outline-weight-hover: 1px;       /* Outline weight on hover */
+  --node-outline-opacity-hover: 1;        /* Outline opacity on hover */
+  
+  /* ======================
+     TRACE (LINE) - DESKTOP
+     ====================== */
+  --link-color: #000000;                  /* Line color - inactive */
+  --link-weight: 11px;                    /* Line thickness */
+  --link-opacity: 0.5;                    /* Line opacity */
+  
+  --link-color-active: #000000;           /* Line color - active */
+  --link-weight-active: 11px;             /* Line thickness - active */
+  --link-opacity-active: 0.8;             /* Line opacity - active */
+  
+  /* Line activation delay (in seconds) */
+  --link-activation-delay: 0.5s;
+  
+  /* ======================
+     TEXT (TREE) - DESKTOP
+     ====================== */
+  --tree-font-size: 14px;                 /* Font size for node labels */
+  --tree-font-color: #000000;             /* Font color */
+  --tree-font-opacity: 1;                 /* Font opacity */
+  --tree-font-weight: 400;                /* Font weight (400 = normal, 500 = medium, 700 = bold) */
+  --tree-font-style: normal;              /* Font style (normal, italic) */
+  
+  --tree-font-weight-active: 500;         /* Font weight when active */
+  
+  /* Text background box */
+  --label-bg-padding: 1px;                /* Padding around text in white box */
+  
+  /* ======================
+     ANIMATIONS
+     ====================== */
+  --pulse-duration: 2s;                   /* Root node pulse animation duration */
+}
+
+/* ==========================================================================
+   TABLET SETTINGS (481px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  :root {
+    /* CIRCLE - TABLET */
+    --node-radius: 4px;
+    --node-radius-collapsed: 7px;
+    --node-outline-weight: 1px;
+    
+    /* TRACE - TABLET */
+    --link-weight: 8px;
+    --link-weight-active: 8px;
+    
+    /* TEXT - TABLET */
+    --tree-font-size: 12px;
+    --label-bg-padding: 1px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE SETTINGS (<= 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  :root {
+    /* CIRCLE - MOBILE */
+    --node-radius: 3px;
+    --node-radius-collapsed: 6px;
+    --node-outline-weight: 1px;
+    
+    /* TRACE - MOBILE */
+    --link-weight: 7px;
+    --link-weight-active: 7px;
+    
+    /* TEXT - MOBILE */
+    --tree-font-size: 10px;
+    --label-bg-padding: 1px;
+  }
+}
+
+/* ==========================================================================
+   Node Circles
+   ========================================================================== */
+
+.node .node-shape {
+  cursor: pointer;
+  transition: all 0.15s ease;
+  
+  /* Fill */
+  fill: var(--node-fill);
+  fill-opacity: var(--node-fill-opacity);
+  
+  /* Outline */
+  stroke: var(--node-outline-color);
+  stroke-width: var(--node-outline-weight);
+  stroke-opacity: var(--node-outline-opacity);
+}
+
+/* Root node - always use active style */
+.node.node--root .node-shape {
+  fill: var(--node-fill-active);
+  fill-opacity: var(--node-fill-opacity-active);
+  stroke: var(--node-outline-color-active);
+  stroke-width: var(--node-outline-weight-active);
+  stroke-opacity: var(--node-outline-opacity-active);
+}
+
+/* Active/selected nodes */
+.node.node--active .node-shape {
+  fill: var(--node-fill-active);
+  fill-opacity: var(--node-fill-opacity-active);
+  stroke: var(--node-outline-color-active);
+  stroke-width: var(--node-outline-weight-active);
+  stroke-opacity: var(--node-outline-opacity-active);
+}
+
+/* Hover states */
+.node:hover .node-shape {
+  fill: var(--node-fill-hover);
+  fill-opacity: var(--node-fill-opacity-hover);
+  stroke: var(--node-outline-color-hover);
+  stroke-width: var(--node-outline-weight-hover);
+  stroke-opacity: var(--node-outline-opacity-hover);
+}
+
+/* Root node pulse animation when collapsed */
+.node.node--root.node--collapsed .node-shape {
+  animation: pulse var(--pulse-duration) ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    fill-opacity: var(--node-fill-opacity-active);
+  }
+  50% {
+    fill-opacity: 0.5;
+  }
+}
+
+/* ==========================================================================
+   Node Labels & Background Box
+   ========================================================================== */
+
+.node text {
+  font-family: var(--font-family);
+  font-size: var(--tree-font-size);
+  font-weight: var(--tree-font-weight);
+  font-style: var(--tree-font-style);
+  fill: var(--tree-font-color);
+  fill-opacity: var(--tree-font-opacity);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* White background box behind text */
+.node .label-bg {
+  fill: white;
+  pointer-events: none;
+}
+
+/* Active node label */
+.node.node--active text {
+  font-weight: var(--tree-font-weight-active);
+}
+
+/* ==========================================================================
+   Links/Edges (Single line with rounded caps)
+   ========================================================================== */
+
+.link {
+  fill: none;
+  stroke: var(--link-color);
+  stroke-width: var(--link-weight);
+  stroke-opacity: var(--link-opacity);
+  stroke-linecap: round;
+  transition: 
+    stroke var(--link-activation-delay) ease,
+    stroke-opacity var(--link-activation-delay) ease,
+    stroke-width var(--link-activation-delay) ease;
+}
+
+/* Active path */
+.link.link--active {
+  stroke: var(--link-color-active);
+  stroke-width: var(--link-weight-active);
+  stroke-opacity: var(--link-opacity-active);
+}

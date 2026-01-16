@@ -1,0 +1,14 @@
+{
+  "title": "Now",
+  "description": "Currently on my nightstand. What I'm actively reading this month.",
+  "date": "2024-11-01T00:00:00.000Z",
+  "image": "/images/placeholder.png",
+  "collaborators": [
+    "Local book club"
+  ],
+  "references": [
+    "Designing Data-Intensive Applications by Martin Kleppmann",
+    "The Design of Everyday Things by Don Norman"
+  ],
+  "content": "<p>Focused on systems thinking and interaction design fundamentals.</p>\n<p><img src=\"/images/placeholder.png\" alt=\"placeholder\"></p>\n<p>Rotating between technical depth and design philosophy.</p>\n"
+}

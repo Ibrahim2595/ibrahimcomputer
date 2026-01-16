@@ -1,0 +1,18 @@
+{
+  "title": "Prototypes",
+  "description": "More developed work. Experiments that graduated.",
+  "date": "2024-08-10T00:00:00.000Z",
+  "image": "/images/placeholder.png",
+  "collaborators": [
+    "IBM Research team"
+  ],
+  "references": [
+    "Design thinking methodology",
+    "Rapid prototyping frameworks"
+  ],
+  "resources": [
+    "Figma",
+    "React"
+  ],
+  "content": "<p>Functional enough to test. Rough enough to change.</p>\n<p><img src=\"/images/placeholder.png\" alt=\"placeholder\"></p>\n<p>Current focus on AI-assisted tools for knowledge workers.</p>\n<p><img src=\"/images/placeholder.png\" alt=\"placeholder\"></p>\n<p>Iterating on interfaces that respect human attention.</p>\n"
+}

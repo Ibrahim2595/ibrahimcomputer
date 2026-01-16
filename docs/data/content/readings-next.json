@@ -1,0 +1,11 @@
+{
+  "title": "Next",
+  "description": "The queue. Books waiting patiently for their turn.",
+  "date": "2024-10-15T00:00:00.000Z",
+  "image": "/images/placeholder.png",
+  "references": [
+    "Thinking in Systems by Donella Meadows",
+    "The Timeless Way of Building by Christopher Alexander"
+  ],
+  "content": "<p>A deliberate backlog. Quality over quantity.</p>\n"
+}

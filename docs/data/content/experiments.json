@@ -1,0 +1,17 @@
+{
+  "title": "Experiments",
+  "description": "Quick tests. Learning through doing with minimal investment.",
+  "date": "2024-09-20T00:00:00.000Z",
+  "image": "/images/placeholder.png",
+  "collaborators": [
+    "Weekend projects"
+  ],
+  "references": [
+    "Arduino documentation",
+    "P5.js reference"
+  ],
+  "resources": [
+    "https://github.com"
+  ],
+  "content": "<p>Small bets. Fast feedback. Most fail. That&#39;s the design.</p>\n<p><img src=\"/images/placeholder.png\" alt=\"placeholder\"></p>\n<p>Recent explorations in generative interfaces and ambient computing.</p>\n"
+}
