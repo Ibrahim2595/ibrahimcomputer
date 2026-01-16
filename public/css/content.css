@@ -1,0 +1,311 @@
+/* ==========================================================================
+   Content Display Styles - Table Layout
+   ==========================================================================
+   
+   FONT CUSTOMIZATION:
+   Edit these in main.css :root section:
+   - --content-font-size
+   - --content-font-color
+   - --content-font-opacity
+   - --content-font-weight
+   - --content-font-style
+   - --content-line-height
+   - --content-title-size
+   - --content-title-color
+   - --content-title-weight
+   
+   ========================================================================== */
+
+/* Article Container - Table style with thin border */
+.content-article {
+  border: 1px solid var(--color-black);
+  background: var(--color-white);
+  width: 100%;
+}
+
+/* ==========================================================================
+   Table Layout Structure
+   ========================================================================== */
+
+/* Header Row - Title and Meta */
+.content-header {
+  display: flex;
+  border-bottom: 1px solid var(--color-black);
+}
+
+.content-title {
+  font-size: var(--content-title-size, 24px);
+  font-weight: var(--content-title-weight, 400);
+  line-height: 1.4;
+  color: var(--content-title-color, #000000);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  flex: 1;
+  border-right: 1px solid var(--color-black);
+}
+
+.content-meta {
+  display: flex;
+  font-size: var(--content-font-size, 16px);
+  color: var(--content-font-color, #000000);
+  opacity: var(--content-font-opacity, 1);
+}
+
+.content-meta-item {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-right: 1px solid var(--color-black);
+  font-style: italic;
+}
+
+.content-meta-item:last-child {
+  border-right: none;
+}
+
+/* Description Row */
+.content-description {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: 1px solid var(--color-black);
+  font-size: var(--content-font-size, 16px);
+  font-weight: var(--content-font-weight, 400);
+  font-style: var(--content-font-style, normal);
+  color: var(--content-font-color, #000000);
+  opacity: var(--content-font-opacity, 1);
+  line-height: var(--content-line-height, 1.6);
+}
+
+/* Image/Placeholder Row */
+.content-image-container {
+  background: var(--color-gray-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  border-bottom: 1px solid var(--color-black);
+}
+
+.content-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-placeholder {
+  max-width: 200px;
+  height: auto;
+  opacity: 0.5;
+}
+
+/* Body Content (additional text below image) */
+.content-body {
+  color: var(--content-font-color, #000000);
+  opacity: var(--content-font-opacity, 1);
+  font-size: var(--content-font-size, 16px);
+  font-weight: var(--content-font-weight, 400);
+  font-style: var(--content-font-style, normal);
+  line-height: var(--content-line-height, 1.6);
+  overflow: hidden;
+}
+
+.content-body:empty {
+  display: none;
+}
+
+.content-body:not(:empty) {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-black);
+}
+
+/* ==========================================================================
+   Markdown Content Body Styling
+   ========================================================================== */
+
+.content-body p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.content-body p:last-child {
+  margin-bottom: 0;
+}
+
+.content-body a {
+  color: var(--content-font-color, #000000);
+  text-decoration: underline;
+}
+
+.content-body a:hover {
+  opacity: 0.7;
+}
+
+/* Images in body content */
+.content-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--spacing-sm) 0;
+}
+
+/* Images in paragraphs */
+.content-body p img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-body ul,
+.content-body ol {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+}
+
+.content-body li {
+  margin-bottom: 0.25rem;
+}
+
+.content-body strong {
+  font-weight: var(--font-weight-medium);
+}
+
+.content-body h2,
+.content-body h3,
+.content-body h4 {
+  font-size: var(--content-font-size, 16px);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.content-body blockquote {
+  margin: var(--spacing-xs) 0;
+  padding-left: var(--spacing-sm);
+  border-left: 2px solid var(--color-black);
+  font-style: italic;
+}
+
+.content-body code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9em;
+  background: var(--color-gray-light);
+  padding: 0.125rem 0.25rem;
+}
+
+/* ==========================================================================
+   Footer - References and Resources
+   ========================================================================== */
+
+.content-footer {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: calc(var(--content-font-size, 16px) * 0.9);
+  color: var(--content-font-color, #000000);
+  opacity: var(--content-font-opacity, 1);
+}
+
+.content-footer:empty {
+  display: none;
+}
+
+.content-references,
+.content-resources {
+  margin-bottom: var(--spacing-xs);
+}
+
+.content-references:last-child,
+.content-resources:last-child {
+  margin-bottom: 0;
+}
+
+.content-references-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.content-references-list {
+  display: inline;
+  list-style: none;
+  padding: 0;
+}
+
+.content-references-list li {
+  display: inline;
+}
+
+.content-references-list li::after {
+  content: ', ';
+}
+
+.content-references-list li:last-child::after {
+  content: '';
+}
+
+.content-references-list a {
+  color: var(--content-font-color, #000000);
+  text-decoration: underline;
+}
+
+.content-references-list a:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   TABLET (481px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .content-header {
+    flex-direction: column;
+  }
+  
+  .content-title {
+    border-right: none;
+    border-bottom: 1px solid var(--color-black);
+  }
+  
+  .content-meta {
+    flex-wrap: wrap;
+  }
+  
+  .content-meta-item {
+    border-bottom: 1px solid var(--color-black);
+  }
+  
+  .content-meta-item:last-child {
+    border-bottom: none;
+  }
+  
+  .content-image-container {
+    min-height: 250px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE (<= 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .content-header {
+    flex-direction: column;
+  }
+  
+  .content-title {
+    border-right: none;
+    border-bottom: 1px solid var(--color-black);
+  }
+  
+  .content-meta {
+    flex-wrap: wrap;
+  }
+  
+  .content-meta-item {
+    border-bottom: 1px solid var(--color-black);
+  }
+  
+  .content-meta-item:last-child {
+    border-bottom: none;
+  }
+  
+  .content-image-container {
+    min-height: 200px;
+  }
+  
+  .content-body:not(:empty),
+  .content-description,
+  .content-footer {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}

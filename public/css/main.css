@@ -1,0 +1,227 @@
+/* ==========================================================================
+   Global Styles & Layout
+   ==========================================================================
+   
+   BREAKPOINTS (3 fixed sizes - NO continuous responsiveness):
+   - Desktop: > 1024px
+   - Tablet: 481px - 1024px  
+   - Mobile: <= 480px
+   
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray-light: #e8e8e8;
+  --color-gray-medium: #999999;
+  --color-gray-bg: #e0e0e0;
+  
+  /* ======================
+     CONTENT WIDTH
+     ====================== */
+  --content-max-width: 720px;             /* Desktop content width */
+  --content-max-width-tablet: 600px;      /* Tablet content width */
+  --content-max-width-mobile: 100%;       /* Mobile content width */
+  
+  /* ======================
+     CONTENT TEXT - DESKTOP
+     ====================== */
+  --content-font-size: 16px;              /* Body text size */
+  --content-font-color: #000000;          /* Body text color */
+  --content-font-opacity: 1;              /* Body text opacity */
+  --content-font-weight: 400;             /* Body text weight */
+  --content-font-style: normal;           /* Body text style (normal, italic) */
+  --content-line-height: 1.6;             /* Line height */
+  
+  --content-title-size: 24px;             /* Title size */
+  --content-title-color: #000000;         /* Title color */
+  --content-title-weight: 400;            /* Title weight */
+  
+  /* Typography */
+  --font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-base: 14px;
+  --font-size-large: 18px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  
+  /* Spacing - Desktop */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --margin-horizontal: max(2rem, 15vw);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-medium: 300ms ease;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Tree Section - DESKTOP
+   ========================================================================== */
+
+.tree-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg) var(--margin-horizontal);
+  min-height: 45vh;
+  transition: min-height var(--transition-medium);
+}
+
+.tree-section.has-content {
+  min-height: 35vh;
+}
+
+.tree-container {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#tree-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   Content Section - DESKTOP
+   ========================================================================== */
+
+.content-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--margin-horizontal) var(--spacing-lg);
+  opacity: 0;
+  transform: translateY(10px);
+  visibility: hidden;
+  transition: 
+    opacity var(--transition-medium),
+    transform var(--transition-medium),
+    visibility var(--transition-medium);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.content-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  max-height: none;
+  overflow: visible;
+}
+
+.content-container {
+  width: 100%;
+  max-width: var(--content-max-width);
+}
+
+/* ==========================================================================
+   TABLET (481px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  :root {
+    --margin-horizontal: 1.5rem;
+    --content-font-size: 15px;
+    --content-title-size: 22px;
+  }
+  
+  .tree-section {
+    min-height: 38vh;
+    padding: var(--spacing-md) var(--margin-horizontal);
+  }
+  
+  .tree-section.has-content {
+    min-height: 32vh;
+  }
+  
+  .tree-container {
+    min-height: 220px;
+  }
+  
+  .content-container {
+    max-width: var(--content-max-width-tablet);
+  }
+  
+  .content-section {
+    padding: 0 var(--margin-horizontal) var(--spacing-md);
+  }
+}
+
+/* ==========================================================================
+   MOBILE (<= 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  :root {
+    --margin-horizontal: 1rem;
+    --content-font-size: 14px;
+    --content-title-size: 20px;
+  }
+  
+  .tree-section {
+    min-height: 35vh;
+    padding: var(--spacing-sm) 0;
+  }
+  
+  .tree-section.has-content {
+    min-height: 30vh;
+  }
+  
+  .tree-container {
+    min-height: 200px;
+    max-width: 100%;
+  }
+  
+  .content-container {
+    max-width: var(--content-max-width-mobile);
+    padding: 0 var(--margin-horizontal);
+  }
+  
+  .content-section {
+    padding: 0 0 var(--spacing-md);
+  }
+}

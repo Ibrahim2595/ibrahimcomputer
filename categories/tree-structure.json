@@ -1,0 +1,75 @@
+{
+  "name": "Hi, I'm Ibrahim",
+  "slug": "about",
+  "children": [
+    {
+      "name": "Input",
+      "slug": "interests",
+      "children": [
+        {
+              "name": "Readings",
+              "slug": null,
+              "children": [
+            {
+              "name": "Now",
+              "slug": "readings-now",
+              "children": null
+            },
+            {
+              "name": "Next",
+              "slug": "readings-next",
+              "children": null
+            },
+            {
+              "name": "Past",
+              "slug": "readings-past",
+              "children": null
+            }
+              ]
+        },
+        {
+              "name": "Signals",
+              "slug": "signals",
+              "children": null
+        }
+      ]
+    },
+    {
+      "name": "Thinking",
+      "slug": "thinking",
+      "children": [
+            {
+              "name": "Interests",
+              "slug": "interests",
+              "children": null
+            },
+            {
+              "name": "On my desk",
+              "slug": "on-my-desk",
+              "children": null
+            },
+            {
+              "name": "Seeds",
+              "slug": "seeds",
+              "children": null
+            }
+          ]
+    },
+    {
+      "name": "Making",
+      "slug": "making",
+      "children": [
+        {
+          "name": "Experiments",
+          "slug": "experiments",
+          "children": null
+        },
+        {
+          "name": "Prototypes",
+          "slug": "prototypes",
+          "children": null
+        }
+      ]
+    }
+  ]
+}
